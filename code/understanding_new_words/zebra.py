@@ -123,6 +123,16 @@ plt.imshow( result.reshape( (21,21)).T)
 result = sess.run( ltn.Literal( False, predicates["horse"], word).tensor, feed_dict = feed_dict)
 plt.imshow( result.reshape( (21,21)).T)
 
+print( "is the zebra a lion? %s" \
+    % sess.run( ltn.Clause( [ltn.Literal( True, predicates["lion"], constants["zebra"])], label="bla").tensor))
+
+print( "is the zebra bw? %s" \
+    % sess.run( ltn.Clause( [ltn.Literal( True, predicates["bw"], constants["zebra"])], label="bla").tensor))
+
+print( "is the zebra a horse? %s" \
+    % sess.run( ltn.Clause( [ltn.Literal( True, predicates["horse"], constants["zebra"])], label="bla").tensor))
+
+
 print( sess.run( ltn.Clause( [ltn.Literal( False, predicates["zebra"], word),
                        ltn.Literal( False, predicates["lion"], word)]).tensor, 
                        feed_dict = feed_dict))
