@@ -117,4 +117,13 @@ print( "zebra: %s" % sess.run(constants["zebra"].tensor))
 for c, cc in clauses.iteritems():
     print( "%s: %s" %( c, sess.run( cc.tensor, feed_dict = feed_dict)))
 
+data = sess.run( ltn.Literal( True, predicates["zebra"], word).tensor, feed_dict = feed_dict)
+plt.imshow( data.reshape( (21,21)).T)
+
+data = sess.run( ltn.Literal( False, predicates["horse"], word).tensor, feed_dict = feed_dict)
+plt.imshow( data.reshape( (21,21)).T)
+
+print( sess.run( ltn.Clause( [ltn.Literal( False, predicates["zebra"], word),
+                       ltn.Literal( False, predicates["lion"], word)]).tensor, 
+                       feed_dict = feed_dict))
 #sess.close()
