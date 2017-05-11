@@ -5,7 +5,6 @@ Created on Thu May 11 2017
 @author: spranger
 """
 
-
 import numpy as np
 import tensorflow as tf
 import logictensornetworks as ltn
@@ -29,6 +28,7 @@ data_embeddings = { "horse" : [1.,0.],
                    "donkey" : [1.,0.],
                    "pony" : [.8,0.],
                    "bw" : [0.,1.],
+                   "lion" : [-1.,-1.],
                    "zebra" : None}
 predicates = {}
 constants = {}
@@ -62,6 +62,10 @@ clauses["notHornotBWorZ"] = ltn.Clause([ltn.Literal(True, predicates["zebra"], w
 clauses["restrictDomain"] = ltn.Clause( [ltn.Literal( True, ltn.In_range(word, [-1., -1.],[1., 1.]), constants["zebra"])],
                                         label = "restrictDomain")
 
+clauses["notHlion"] = ltn.Clause( [ltn.Literal(False, predicates["horse"], constants["lion"])],
+                                        label = "notHlion")
+clauses["notBWlion"] = ltn.Clause( [ltn.Literal(False, predicates["bw"], constants["lion"])],
+                                        label = "notBWlion")
 #for c in ["horse", "horse2","horse3","pony", "donkey"]:
 #    l = "notC%s" % c
 #    clauses[l] = ltn.Clause([ltn.Literal(False, predicates["cow"], constants[c])],
@@ -101,7 +105,7 @@ while sat_level < 1e-10:
     print "initialization",sat_level
 print(0, " ------> ", sat_level)
 
-for i in range(5000):
+for i in range(1000):
   KB.train(sess, feed_dict = feed_dict)
   sat_level = sess.run(KB.tensor, feed_dict = feed_dict)
   print(i + 1, " ------> ", sat_level)
