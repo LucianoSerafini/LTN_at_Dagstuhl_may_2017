@@ -66,24 +66,6 @@ clauses["notHlion"] = ltn.Clause( [ltn.Literal(False, predicates["horse"], const
                                         label = "notHlion")
 clauses["notBWlion"] = ltn.Clause( [ltn.Literal(False, predicates["bw"], constants["lion"])],
                                         label = "notBWlion")
-#for c in ["horse", "horse2","horse3","pony", "donkey"]:
-#    l = "notC%s" % c
-#    clauses[l] = ltn.Clause([ltn.Literal(False, predicates["cow"], constants[c])],
-#                                    label = "notHornotBWorZ")
-#clauses["notH_cow"] = ltn.Clause([ltn.Literal(False, predicates["horse"], constants["cow"])],
-#                                    label = "notH_cow")
-## horse, donkey, pony -> the not BW
-#for c in ["horse", "horse2","horse3","pony", "donkey"]:
-#    l = "notbw%s" % c
-#    clauses[l] = ltn.Clause( [ltn.Literal( False, predicates["bw"], constants[c])],
-#                                        label = l)
-
-#clauses["bwcow"] = ltn.Clause( [ltn.Literal( True, predicates["bw"], constants["cow"])],
-#                                        label = "bwcow")
-#clauses["bwzebra"] = ltn.Clause( [ltn.Literal( True, predicates["bw"], constants["zebra"])],
-#                                        label = "bwzebra")                                            
-#clauses["horse_zebra"] = ltn.Clause( [ltn.Literal( True, predicates["horse"], constants["zebra"])],
-#                                        label = "horse_zebra")                                            
 
 data = np.array([[i,j] for i in np.linspace(-1,1,21,endpoint=True)
                 for j in np.linspace(-1,1,21,endpoint=True)],
