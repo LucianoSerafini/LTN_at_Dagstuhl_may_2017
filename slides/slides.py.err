@@ -1,0 +1,4 @@
+  File "<stdin>", line 2
+    person = ltn.Domain(number_of_features, label="Person")
+    ^
+IndentationError: unexpected indent
